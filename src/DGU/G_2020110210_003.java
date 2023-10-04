@@ -2,9 +2,8 @@ package DGU;
 
 import java.util.Scanner;
 
-public class G_2020110210_003 {
-
 	// GradingSwitch
+public class G_2020110210_003 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner scanner = new Scanner(System.in);

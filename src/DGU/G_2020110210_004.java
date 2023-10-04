@@ -1,8 +1,7 @@
 package DGU;
 
-public class G_2020110210_004 {
-  
   // ScoreAverage
+public class G_2020110210_004 {
   public static void main(String[] args) {
     double score[][] = {{4.5, 3.88}, // 1학년 1, 2학기 평점
                         {4.3, 4.33}, // 2학년 1, 2학기 평점

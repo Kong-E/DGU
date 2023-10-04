@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+// 예제 10-1 IndepClassListener : 독립 클래스로 Action 이벤트 리스너 작성
 public class G_2020110210_009 extends JFrame {
   public G_2020110210_009() {
     setTitle("Action 이벤트 리스너 예제");

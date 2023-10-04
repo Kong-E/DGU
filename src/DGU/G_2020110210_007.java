@@ -3,6 +3,7 @@ package DGU;
 import javax.swing.*;
 import java.awt.*;
 
+// 예제 9-2 ContentPaneEx : 3개의 버튼 컴포넌트를 가진 스윙프레임 만들기
 public class G_2020110210_007 extends JFrame {
   public G_2020110210_007() {
     setTitle("ContentPane과 JFrame");

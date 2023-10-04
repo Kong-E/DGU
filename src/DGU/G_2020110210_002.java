@@ -1,8 +1,7 @@
 package DGU;
 
-public class G_2020110210_002 {
-
 		// BitOperator
+public class G_2020110210_002 {
 	public static void main(String[] args) {
 		short a = (short)0x55ff;
 		short b = (short)0x00ff;
