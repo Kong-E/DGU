@@ -1,37 +1,32 @@
 package DGU;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.List;
 
 public class G_2020110210_013 {
+
+    private static final String INPUT_FILE_PATH = "C:\\Temp\\output.txt";
+    private static final String OUTPUT_FILE_PATH = "C:\\Temp\\output_buffer.txt";
+
     public static void main(String[] args) {
-        List<String> dataList = Arrays.asList("융합프로그래밍2", "BufferStream을 이용해 파일 생성하고 읽기", "경제학과 공소연");
-
-        // 절대경로로 파일 지정
-        String absolutePath = "C:\\Temp\\output_buffer.txt";
-
-        // FileWriter 및 BufferedWriter 사용하여 파일 생성 및 데이터 쓰기
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(absolutePath, StandardCharsets.UTF_8))) {
-            for (String data : dataList) {
-                bw.write(data);
-                bw.newLine();
+        try (
+                // 파일에서 데이터를 읽는 BufferedInputStream 객체 생성
+                BufferedInputStream bin = new BufferedInputStream(new FileInputStream(INPUT_FILE_PATH));
+                // 파일로 데이터를 쓰는 BufferedOutputStream 객체 생성
+                BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(OUTPUT_FILE_PATH))) {
+            int data;
+            // 파일에서 데이터를 읽어서 다른 파일에 쓰기
+            while ((data = bin.read()) != -1) {
+                bout.write(data);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // FileReader 및 BufferedReader 사용하여 파일 읽기 및 출력
-        try (BufferedReader br = new BufferedReader(new FileReader(absolutePath, StandardCharsets.UTF_8))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-            }
+            bout.flush(); // 버퍼의 내용을 출력 파일에 쓴다.
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+            System.out.println("Please ensure that the input file exists.");
         } catch (IOException e) {
             e.printStackTrace();
         }
