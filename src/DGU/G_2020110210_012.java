@@ -1,15 +1,10 @@
 package DGU;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
+// stream 사용 입력1개 - 출력 1개
 public class G_2020110210_012 {
     public static void main(String[] args) {
         List<String> dataList = Arrays.asList("Hello Stream", "2020110210 Kong Soyeon", "Java Programming");
@@ -47,6 +42,8 @@ public class G_2020110210_012 {
                 content.append((char) readChar); // 파일의 내용을 읽어서 content에 저장
             }
             System.out.println(content.toString());
+            fin.close();
+            isr.close();
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println(absolutePath + "을 읽을 수 없습니다.");

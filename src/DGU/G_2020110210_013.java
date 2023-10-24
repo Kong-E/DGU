@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+// buffer 사용 입력1개 - 출력 1개
 public class G_2020110210_013 {
 
     private static final String INPUT_FILE_PATH = "C:\\Temp\\output.txt";
