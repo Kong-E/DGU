@@ -2,51 +2,72 @@ package DGU;
 
 import java.util.Scanner;
 
-	// GradingSwitch
+// GradingSwitch
 public class G_2020110210_003 {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner scanner = new Scanner(System.in);
-		
+		Scanner sc = new Scanner(System.in);
+		int N = 0;
+
+		// 학생 수 입력 및 5 이상 체크
+		while (true) {
+			System.out.println("학생 수를 입력해주세요.");
+			N = sc.nextInt();
+			if (N >= 5) {
+				break;
+			} else {
+				System.out.println("5 이상의 수를 입력하시오.");
+			}
+		}
+
+		String[] students = new String[N];
+		int[] score1 = new int[N];
+		int[] score2 = new int[N];
+
+		// 학생 정보 입력
+		for (int i = 0; i < students.length; i++) {
+			students[i] = "학생" + (i + 1);
+			System.out.println(students[i]);
+			System.out.print("국어점수 : ");
+			score1[i] = sc.nextInt();
+			System.out.print("영어점수 : ");
+			score2[i] = sc.nextInt();
+		}
+
+		// 학생 정보 및 등급 출력
+		System.out.println("이름\t\t국어\t영어");
+		for (int i = 0; i < score1.length; i++) {
+			System.out.print(students[i] + "\t\t");
+			grade(score1[i]);
+			grade(score2[i]);
+			System.out.println();
+		}
+	}
+
+	// 점수를 바탕으로 등급 및 세부 등급 결정
+	public static void grade(int score) {
 		char grade;
+		char sign = (score % 10 >= 5 || score == 100) ? '+' : '0'; // 세부 등급 결정
 
-		System.out.print("점수를 입력하세요(0~100) : ");
-		int score = scanner.nextInt();
-
-		System.out.print("학년을 입력하세요(1~4) : ");
-		int year = scanner.nextInt();
-
-		// switch case 문을 이용하여 60점 이상이면 합격, 미만이면 불합격 출력, 4학년의 경우 70점 이상이어야 합격
-		switch (year) {
-		case 1: // 1학년
-		case 2: // 2학년
-		case 3: // 3학년
-			if (score >= 60) {
-				grade = 'P'; // Pass
-			} else {
-				grade = 'F'; // Fail
-			}
-			break;
-		case 4: // 4학년
-			if (score >= 70) {
-				grade = 'P'; // Pass
-			} else {
-				grade = 'F'; // Fail
-			}
-			break;
-		default:
-			grade = 'X'; // 잘못된 학년
-		}
-	
-		scanner.close();
-
-		if (grade == 'P') {
-			System.out.println("합격입니다.");
-		} else if (grade == 'F') {
-			System.out.println("불합격입니다.");
-		} else {
-			System.out.println("학년을 잘못 입력하셨습니다.");
+		switch (score / 10) {
+			case 10:
+			case 9:
+				grade = 'A';
+				break;
+			case 8:
+				grade = 'B';
+				break;
+			case 7:
+				grade = 'C';
+				break;
+			case 6:
+				grade = 'D';
+				break;
+			default:
+				grade = 'F';
+				sign = ' ';
+				break;
 		}
 
+		System.out.printf("%c%c\t", grade, sign);
 	}
 }

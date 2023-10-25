@@ -1,23 +1,30 @@
-import java.io.*;
+import java.util.Scanner;
 
-// 예제 8-6 : FileInputStream으로 바이너리 파일 읽기
-public class FileInputStreamEx {
+// 예제 2-14 switch 문으로 학점 매기기
+public class GradingSwitch {
   public static void main(String[] args) {
-    byte b[] = new byte[6]; // 비어 있는 byte 배열
-    try {
-      FileInputStream fin = new FileInputStream("c:\\Temp\\test.out");
-      int n = 0, c;
-      while ((c = fin.read()) != -1) {
-        b[n] = (byte) c;
-        n++;
-      }
-      System.out.println("c:\\Temp\\test.out에서 읽은 배열을 출력합니다.");
-      for (int i = 0; i < b.length; i++)
-        System.out.print(b[i] + " ");
-      System.out.println();
-      fin.close();
-    } catch (IOException e) {
-      System.out.println("c:\\Temp\\test.out에서 읽지 못했습니다. 경로명을 체크해보세요");
+    Scanner scanner = new Scanner(System.in);
+    char grade;
+    System.out.print("점수를 입력하세요(0~100): ");
+    int score = scanner.nextInt();
+    switch (score / 10) {
+      case 10: // score = 100
+      case 9: // score는 90~99
+        grade = 'A';
+        break;
+      case 8: // score는 80~89
+        grade = 'B';
+        break;
+      case 7: // score는 70~79
+        grade = 'C';
+        break;
+      case 6: // score는 60~69
+        grade = 'D';
+        break;
+      default: // score는 59 이하
+        grade = 'F';
     }
+    System.out.println("학점은 " + grade + "입니다");
+    scanner.close();
   }
 }
