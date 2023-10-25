@@ -7,18 +7,18 @@ import java.awt.*;
 public class G_2020110210_007 extends JFrame {
   public G_2020110210_007() {
     setTitle("ContentPane과 JFrame");
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프로그램 종료 설정
 
     Container contentPane = getContentPane();
-    contentPane.setBackground(Color.ORANGE);
-    contentPane.setLayout(new FlowLayout());
+    contentPane.setBackground(Color.ORANGE); // ContentPane 배경색 설정
+    contentPane.setLayout(new FlowLayout()); // FlowLayout으로 레이아웃 설정
 
-    contentPane.add(new JButton("OK"));
-    contentPane.add(new JButton("Cancel"));
-    contentPane.add(new JButton("Ignore"));
+    contentPane.add(new JButton("OK")); // "OK" 버튼 추가
+    contentPane.add(new JButton("Cancel")); // "Cancel" 버튼 추가
+    contentPane.add(new JButton("Ignore")); // "Ignore" 버튼 추가
 
-    setSize(300,150);
-    setVisible(true);
+    setSize(300, 150); // 윈도우 크기 설정
+    setVisible(true); // 윈도우를 화면에 표시
   }
 
   public static void main(String[] args) {
