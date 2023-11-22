@@ -13,7 +13,7 @@ public class G_2020110210_025 extends JFrame {
   private String fileName;
 
   G_2020110210_025() {
-    setTitle("25_2 Ex");
+    setTitle("G_2020110210_25");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     c.setLayout(new BorderLayout());
     p01 = new FileNameInputPanel(this);
@@ -42,7 +42,7 @@ public class G_2020110210_025 extends JFrame {
       p02 = new FruitNameInputPanel(this);
       c.add(p02);
     }
-    c.revalidate();
+    c.revalidate(); // 컨테이너 업데이트
   }
 
   public static void main(String[] args) {
