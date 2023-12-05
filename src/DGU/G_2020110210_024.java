@@ -10,8 +10,8 @@ import java.io.File;
 
 public class G_2020110210_024 extends JFrame {
   private String[] fruits = { "apple", "cherry", "pear", "mango" };
-  private JLabel imgLabel = new JLabel();
-  private JComboBox<String> strCombo = new JComboBox<String>(fruits);
+  private JLabel imgLabel = new JLabel(); // 이미지 출력을 위한 레이블
+  private JComboBox<String> strCombo = new JComboBox<String>(fruits); // 콤보박스 생성
 
   public G_2020110210_024() {
     setTitle("콤보박스 활용 예제");
@@ -21,12 +21,13 @@ public class G_2020110210_024 extends JFrame {
     c.add(strCombo);
     c.add(imgLabel);
 
+    // 콤보박스에 리스너 등록
     strCombo.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        JComboBox<String> cb = (JComboBox<String>) e.getSource();
-        int index = cb.getSelectedIndex();
-        ImageIcon icon = createResizedImageIcon("images/" + fruits[index] + ".jpg", 100, 100);
-        imgLabel.setIcon(icon);
+        JComboBox<String> cb = (JComboBox<String>) e.getSource(); // 선택된 콤보박스 알아내기
+        int index = cb.getSelectedIndex(); // 선택된 콤보박스의 인덱스 알아내기
+        ImageIcon icon = createResizedImageIcon("images/" + fruits[index] + ".jpg", 100, 100); // 이미지 크기 조절
+        imgLabel.setIcon(icon); // 레이블에 이미지 출력
       }
     });
 
@@ -34,6 +35,7 @@ public class G_2020110210_024 extends JFrame {
     setVisible(true);
   }
 
+  // 이미지 사이즈 조절 메서드
   private ImageIcon createResizedImageIcon(String imagePath, int width, int height) {
     try {
       BufferedImage originalImage = ImageIO.read(new File(imagePath));

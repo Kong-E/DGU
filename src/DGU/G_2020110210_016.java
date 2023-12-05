@@ -13,9 +13,9 @@ public class G_2020110210_016 extends JFrame {
 
     // 2차원 배열로 과일 정보 관리
     String[][] fruits = {
-        { "Cherry", "C:\\융프2이미지\\cherry.jpg", "C:\\융프2이미지\\cherry_selected.jpg" },
-        { "Apple", "C:\\융프2이미지\\apple.jpg", "C:\\융프2이미지\\apple_selected.jpg" },
-        { "Pear", "C:\\융프2이미지\\pear.jpg", "C:\\융프2이미지\\pear_selected.jpg" }
+        { "Cherry", "images\\cherry.jpg", "images\\cherry_selected.jpg" },
+        { "Apple", "images\\apple.jpg", "images\\apple_selected.jpg" },
+        { "Pear", "images\\pear.jpg", "images\\pear_selected.jpg" }
     };
 
     List<ImageIcon> icons = new ArrayList<>();

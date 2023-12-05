@@ -7,7 +7,7 @@ import java.awt.event.*;
 import java.io.*;
 
 public class Kiosk {
-  private static Map<String, Integer> cart = new HashMap<>();
+  private static Map<String, Integer> cart = new HashMap<>(); // 장바구니를 저장할 맵
   private static Map<String, Integer> burgers = Map.ofEntries( // 버거 메뉴와 가격을 맵에 추가
       Map.entry("맥크리스피 스리라차 마요", 5000),
       Map.entry("맥스파이시 스리라차 마요", 5500),
@@ -18,7 +18,7 @@ public class Kiosk {
       Map.entry("맥크리스피 클래식 버거", 8000),
       Map.entry("맥스파이시 상하이 버거", 8500),
       Map.entry("1955 버거", 9000));
-  private static Map<String, Integer> sides = Map.ofEntries(
+  private static Map<String, Integer> sides = Map.ofEntries( // 사이드 메뉴와 가격을 맵에 추가
       Map.entry("소시지 스낵랩", 3000),
       Map.entry("칠리 치즈 후라이", 3500),
       Map.entry("토마토 치킨 스낵랩", 3000),
@@ -29,7 +29,7 @@ public class Kiosk {
       Map.entry("맥너겟", 4000),
       Map.entry("맥스파이시 치킨 텐더", 4500),
       Map.entry("해쉬 브라운", 2000));
-  private static Map<String, Integer> drinks = Map.ofEntries(
+  private static Map<String, Integer> drinks = Map.ofEntries( // 음료 메뉴와 가격을 맵에 추가
       Map.entry("코카콜라", 2000),
       Map.entry("코카콜라 제로", 2000),
       Map.entry("스프라이트", 2000),
@@ -45,57 +45,58 @@ public class Kiosk {
 
   public static void main(String[] args) {
     JFrame frame = new JFrame("동국대학교 키오스크");
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(800, 800);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임을 닫으면 프로그램 종료
+    frame.setSize(800, 800); // 프레임 크기 설정
 
-    JTabbedPane tabbedPane = new JTabbedPane();
+    JTabbedPane tabbedPane = new JTabbedPane(); // 탭을 담을 패널
 
-    JPanel burgerPanel = createMenuPanel(burgers, "burgers");
-    JPanel sidePanel = createMenuPanel(sides, "sides");
-    JPanel drinkPanel = createMenuPanel(drinks, "drinks");
+    JPanel burgerPanel = createMenuPanel(burgers, "burgers"); // 버거 메뉴를 담을 패널
+    JPanel sidePanel = createMenuPanel(sides, "sides"); // 사이드 메뉴를 담을 패널
+    JPanel drinkPanel = createMenuPanel(drinks, "drinks"); // 음료 메뉴를 담을 패널
 
-    JPanel learnedPanel = new JPanel();
-    learnedPanel.add(new JLabel("배운 것"));
+    JPanel learnedPanel = new JPanel(); // 배운 것을 담을 패널
+    learnedPanel.add(new JLabel("배운 것")); // 배운 것을 표시할 레이블
 
-    JScrollPane burgerScrollPane = createScrollPane(burgerPanel);
-    JScrollPane sideScrollPane = createScrollPane(sidePanel);
-    JScrollPane drinkScrollPane = createScrollPane(drinkPanel);
+    JScrollPane burgerScrollPane = createScrollPane(burgerPanel); // 버거 메뉴를 담을 스크롤 패널
+    JScrollPane sideScrollPane = createScrollPane(sidePanel); // 사이드 메뉴를 담을 스크롤 패널
+    JScrollPane drinkScrollPane = createScrollPane(drinkPanel); // 음료 메뉴를 담을 스크롤 패널
 
-    tabbedPane.addTab("버거", burgerScrollPane);
-    tabbedPane.addTab("사이드", sideScrollPane);
-    tabbedPane.addTab("음료", drinkScrollPane);
-    tabbedPane.addTab("배운것", learnedPanel);
+    tabbedPane.addTab("버거", burgerScrollPane); // 버거 탭에 버거 스크롤 패널 추가
+    tabbedPane.addTab("사이드", sideScrollPane); // 사이드 탭에 사이드 스크롤 패널 추가
+    tabbedPane.addTab("음료", drinkScrollPane); // 음료 탭에 음료 스크롤 패널 추가
+    tabbedPane.addTab("배운것", learnedPanel); // 배운 것 탭에 배운 것 패널 추가
 
-    JPanel infoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-    infoPanel.setPreferredSize(new Dimension(frame.getWidth(), 50));
-    infoPanel.setBackground(new Color(200, 200, 200));
+    JPanel infoPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); // 총합계와 결제하기 버튼을 담을 패널
+    infoPanel.setPreferredSize(new Dimension(frame.getWidth(), 50)); // 패널 크기 설정
+    infoPanel.setBackground(new Color(200, 200, 200)); // 패널 배경색 설정
 
-    JButton viewCartButton = new JButton("장바구니 보기");
-    viewCartButton.addActionListener(new ActionListener() {
+    JButton viewCartButton = new JButton("장바구니 보기"); // 장바구니 보기 버튼
+    viewCartButton.addActionListener(new ActionListener() { // 장바구니 보기 버튼에 액션 리스너 추가
       @Override
       public void actionPerformed(ActionEvent e) {
-        showCartFrame();
+        showCartFrame(); // 장바구니 보기 프레임을 보여줌
       }
     });
 
-    JButton paymentButton = new JButton("결제하기");
+    JButton paymentButton = new JButton("결제하기"); // 결제하기 버튼
     paymentButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        showPaymentFrame();
+        showPaymentFrame(); // 결제하기 프레임을 보여줌
       }
     });
 
     totalLabel = new JLabel("총 합계: 0원");
-    infoPanel.add(totalLabel);
-    infoPanel.add(viewCartButton);
-    infoPanel.add(paymentButton);
+    infoPanel.add(totalLabel); // 총합계를 표시할 레이블을 패널에 추가
+    infoPanel.add(viewCartButton); // 장바구니 보기 버튼을 패널에 추가
+    infoPanel.add(paymentButton); // 결제하기 버튼을 패널에 추가
 
-    frame.add(tabbedPane, BorderLayout.CENTER);
-    frame.add(infoPanel, BorderLayout.SOUTH);
+    frame.add(tabbedPane, BorderLayout.CENTER); // 탭 패널을 프레임의 중앙에 추가
+    frame.add(infoPanel, BorderLayout.SOUTH); // 총합계와 결제하기 버튼을 담은 패널을 프레임의 하단에 추가
     frame.setVisible(true);
   }
 
+  // 메뉴를 담을 패널을 생성하는 메소드
   private static JPanel createMenuPanel(Map<String, Integer> menuItems, String imageFolder) {
     JPanel menuPanel = new JPanel(new GridLayout(0, 3));
 
@@ -130,6 +131,7 @@ public class Kiosk {
     return menuPanel;
   }
 
+  // 스크롤 패널을 생성하는 메소드
   private static JScrollPane createScrollPane(JPanel panel) {
     JScrollPane scrollPane = new JScrollPane(panel);
     scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -138,6 +140,7 @@ public class Kiosk {
     return scrollPane;
   }
 
+  // 장바구니를 보여주는 프레임을 생성하는 메소드
   private static void showCartFrame() {
     JFrame cartFrame = new JFrame("장바구니");
     cartFrame.setSize(400, 600);
@@ -252,15 +255,18 @@ public class Kiosk {
       outputDir.mkdirs(); // output 폴더가 없으면 생성
     }
 
-    try (PrintWriter out = new PrintWriter("output/영수증.txt")) {
+    try (PrintWriter out = new PrintWriter("output/영수증.csv")) {
+      out.println("상품명,수량,가격"); // CSV 헤더
+
       for (Map.Entry<String, Integer> entry : cart.entrySet()) {
         String item = entry.getKey();
         int quantity = entry.getValue();
         int price = quantity
             * (burgers.getOrDefault(item, 0) + sides.getOrDefault(item, 0) + drinks.getOrDefault(item, 0));
-        out.println(item + " - 수량: " + quantity + ", 가격: " + price);
+        out.println(item + "," + quantity + "," + price); // 각 항목을 쉼표로 구분하여 기록
       }
-      out.println("총 합계: " + total + "원");
+
+      out.println("총 합계,," + total); // 총 합계
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }

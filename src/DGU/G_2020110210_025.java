@@ -56,6 +56,8 @@ class FileNameInputPanel extends JPanel {
     JLabel fileNameLabel = new JLabel("txt 파일 이름을 입력하세요.");
     JTextField fileTf = new JTextField(30);
     JButton makeFileBtn = new JButton("파일 만들기");
+
+    // 파일 만들기 버튼 클릭 시 파일 생성
     makeFileBtn.addActionListener(e -> {
       String fileName = fileTf.getText().trim();
       if (fileName.isEmpty()) {
@@ -74,6 +76,7 @@ class FileNameInputPanel extends JPanel {
       }
     });
 
+    // 파일 불러오기 버튼 클릭 시 파일 불러오기
     JButton loadFileBtn = new JButton("파일 불러오기");
     loadFileBtn.addActionListener(e -> {
       String fileName = fileTf.getText().trim();
@@ -103,6 +106,7 @@ class FruitNameInputPanel extends JPanel {
     fileName = g.getFileName();
     fruitName = new Vector<>();
 
+    // 파일에서 과일 이름 읽어오기
     try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
       String line;
       while ((line = br.readLine()) != null) {
@@ -114,6 +118,7 @@ class FruitNameInputPanel extends JPanel {
       JOptionPane.showMessageDialog(this, "오류가 발생했습니다.");
     }
 
+    // 파일에서 읽어온 과일 이름이 없을 경우
     JPanel topPanel = new JPanel();
     topPanel.setPreferredSize(new Dimension(500, 70));
     JLabel nameLabel = new JLabel("추가 또는 삭제할 과일이름을 입력하세요.");
@@ -134,6 +139,7 @@ class FruitNameInputPanel extends JPanel {
     imagePanel.add(imageLabel);
     JButton returnBtn = new JButton("처음으로");
 
+    // 과일 이름 추가
     addNameBtn.addActionListener(e -> {
       String newFruitName = nameTf.getText();
       if (newFruitName.isEmpty()) {
@@ -149,6 +155,7 @@ class FruitNameInputPanel extends JPanel {
       nameTf.setText("");
     });
 
+    // 과일 이름 삭제
     deleteNameBtn.addActionListener(e -> {
       String deleteFruitName = nameTf.getText();
       if (fruitName.contains(deleteFruitName)) {
@@ -158,8 +165,10 @@ class FruitNameInputPanel extends JPanel {
       nameTf.setText("");
     });
 
+    // 처음으로 버튼 클릭 시 파일 이름 입력 패널로 돌아가기
     returnBtn.addActionListener(e -> g.changePanel(1));
 
+    // 콤보박스 선택 시 이미지 출력
     cb.addActionListener(e -> {
       String name = (String) cb.getSelectedItem();
       if (name != null) {

@@ -53,6 +53,7 @@ public class G_2020110210_021 extends JFrame {
     setVisible(true);
   }
 
+  // 라디오 버튼 생성 메소드
   private JRadioButton createRadioButton(String text, ImageIcon icon, ImageIcon selectedIcon) {
     JRadioButton radioButton = new JRadioButton(text, icon);
     radioButton.setBorderPainted(true);
@@ -60,12 +61,14 @@ public class G_2020110210_021 extends JFrame {
     return radioButton;
   }
 
+  // 이미지 크기 조절 메소드
   private ImageIcon resizeIcon(ImageIcon icon, int width, int height) {
     Image img = icon.getImage();
     Image resizedImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
     return new ImageIcon(resizedImg);
   }
 
+  // 라디오 버튼의 선택 상태가 변경되었을 때 호출되는 리스너
   class MyItemListener implements ItemListener {
     public void itemStateChanged(ItemEvent e) {
       JRadioButton radioButton = (JRadioButton) e.getItem();

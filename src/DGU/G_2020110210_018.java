@@ -21,9 +21,9 @@ public class G_2020110210_018 extends JFrame {
 
     // 과일 정보 및 가격
     String[][] fruits = {
-        { "Cherry", "10000", "C:\\융프2이미지\\cherry.jpg", "C:\\융프2이미지\\cherry_selected.jpg" },
-        { "Apple", "500", "C:\\융프2이미지\\apple.jpg", "C:\\융프2이미지\\apple_selected.jpg" },
-        { "Pear", "1000", "C:\\융프2이미지\\pear.jpg", "C:\\융프2이미지\\pear_selected.jpg" }
+        { "Cherry", "10000", "images\\cherry.jpg", "images\\cherry_selected.jpg" },
+        { "Apple", "500", "images\\apple.jpg", "images\\apple_selected.jpg" },
+        { "Pear", "1000", "images\\pear.jpg", "images\\pear_selected.jpg" }
     };
 
     MyItemListener listener = new MyItemListener();
